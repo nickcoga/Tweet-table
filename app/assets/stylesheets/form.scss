@@ -1,0 +1,117 @@
+// Place all the styles related to the tweet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$principal-color: #1DA1F2;
+$border-gray: #EBEEF0;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding: 5% 25% 0 25% ;
+  border: solid 1px $border-gray;
+  min-height: 500px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page {
+  text-align: center;
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+input[type="submit"] {
+  background-color: white;
+  border: solid 1px $principal-color;
+  border-radius: 8px;
+  color: $principal-color;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  width: 82px;
+  height: 32px;
+  line-height: 24px;
+}
+label {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+input[type="email"]{
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 8px;
+  height: 40px;
+  width: 260px;
+  margin-bottom: 10px;
+}
+input[type="password"]{
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 8px;
+  height: 40px;
+  width: 260px;
+  margin-bottom: 10px;
+}
+input[type="text"]{
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 8px;
+  height: 40px;
+  width: 260px;
+  margin-bottom: 10px;
+}
+input[type="file"]{
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 8px;
+  height: 40px;
+  width: 260px;
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.actions-row{
+  display: flex;
+  justify-content: space-around;
+  & button{
+    background-color: white;
+    border: solid 1px $principal-color;
+    width: 81px;
+    color: $principal-color;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 10%;
+    font-weight: bold;
+  }
+  
+}
+.actions{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  & a{
+    color: blue
+  }
+
+  input[type="submit"]{
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    background-color: $principal-color;
+  }
+
+}
+.body-field{
+  & textarea{
+    width: 260px;
+    height: 160px;
+    resize: none; 
+    border-radius: 10px;
+  }
+}

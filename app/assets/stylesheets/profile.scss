@@ -1,0 +1,51 @@
+// Place all the styles related to the tweet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$principal-color: #1DA1F2;
+$border-gray: #EBEEF0;
+.main-header{
+  text-align: center;
+  border: 1px solid $border-gray;
+  box-sizing: border-box;
+  height: 64px;
+}
+.profile-tag{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $border-gray;
+  box-sizing: border-box;
+  input[type="submit"]{
+    color: $principal-color;
+    background-color: white;
+    font-size: 16px;
+    line-height: 24px;
+    width: 109px;
+    height: 32px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  &_avatar{
+    & img{
+      width:100px;
+      height:100px;
+      border-radius: 50%;
+    }
+  }
+}
+p {
+  margin: 0px;
+  padding: 2px;
+}
+.profile-links{
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid $border-gray;
+  box-sizing: border-box;
+  & .link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}

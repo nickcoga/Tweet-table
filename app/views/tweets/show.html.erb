@@ -1,0 +1,109 @@
+<div class="body">
+
+  <header class="main-header">
+    <h1>Tweet Detail</h1>
+  </header>
+
+  <div class ="tweet">
+    <div class="tweet_avatar">
+      <%= link_to profile_tweets_user_path(@response_tweet.user) do %>
+      <%= @response_tweet.user.avatar.attached? ? image_tag(@response_tweet.user.avatar) : image_tag('Image.png') %>
+      <% end %>
+    </div>
+    
+    <div class = "tweet_body">
+      <div class="tweet_body_main">
+        <%= link_to profile_tweets_user_path(@response_tweet.user) do %>
+        <span class="name"> <%= @response_tweet.user.name %></span>
+        <% end %>
+        <span class = "username">@<%= @response_tweet.user.username %></span>
+        <span class = "date"><%= time_ago_in_words(@response_tweet.created_at) %></span>
+        <p class="paragraph"> <%= @response_tweet.body %></p>
+      </div>
+      <div class="tweet_body_footer">
+        <div class="tweet_body_footer_interactions">
+          
+          <p><%= link_to image_tag('comment.png'), tweet_path(@response_tweet) %><%=@response_tweet.replies.size%></p>
+          
+            <% pre_like = @response_tweet.likes.find { |like| like.user_id == current_user&.id } %>
+            <% if pre_like %>
+                <p><%= link_to image_tag('heartred.png'), tweet_like_path(@response_tweet, pre_like), method: :delete %><%=@response_tweet.likes.size%></p>
+            <% else %>
+                <% if current_user.nil?%>
+                <p><%= image_tag('heart.png') %><%=@response_tweet.likes.size%></p>
+                <% else %>
+                <p><%= link_to image_tag('heart.png'), tweet_likes_path(@response_tweet), method: :post %><%=@response_tweet.likes.size%></p>
+                <%end%>
+            <% end %>
+        
+          </div>
+        <div class="tweet_body_footer_actions">
+          <% if policy(:tweet).destroy? %>
+          <p><%= link_to image_tag('destroy.png'), tweet_path(@response_tweet), 
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+          <% if policy(:tweet).update? %>
+          <p><%= link_to  image_tag('edit.png'), edit_tweet_path(@response_tweet) %></p>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="tweet">
+    <%= render 'form'%>
+  </div>
+
+  <% if !@tweets.nil? %>
+      <% @tweets.each do |tweet| %>
+  <div class="tweet">
+    <div class="tweet_avatar">
+      <%= link_to profile_tweets_user_path(tweet.user) do %>
+      <%= tweet.user.avatar.attached? ? image_tag(tweet.user.avatar) : image_tag('Image.png') %>
+      <% end %>
+    </div>
+    <div class="tweet_body">
+      <div class="tweet_body_main">
+        <span class="name"> <%= tweet.user.name %></span>
+        <span class="username">@<%= tweet.user.username %></span>
+        <span class="date"><%= time_ago_in_words(tweet.created_at) %></span>
+        <p class="paragraph"> <%= tweet.body %></p>
+      </div>
+      <div class="tweet_body_footer">
+        <div class="tweet_body_footer_interactions">
+          <p><%= link_to image_tag('comment.png'), tweet_path(tweet) %><%=tweet.replies.size%></p>
+          
+            <% pre_like = tweet.likes.find { |like| like.user_id == current_user&.id } %>
+            <% if pre_like %>
+                <p><%= link_to image_tag('heartred.png'), tweet_like_path(tweet, pre_like), method: :delete %><%=tweet.likes.size%></p>
+            <% else %>
+                <% if current_user.nil?%>
+                <p><%= image_tag('heart.png') %><%=tweet.likes.size%></p>
+                <% else %>
+                <p><%= link_to image_tag('heart.png'), tweet_likes_path(tweet), method: :post %><%=tweet.likes.size%></p>
+                <%end%>
+            <% end %>
+        </div>
+        <div class = "tweet_body_footer_actions">
+          <% if policy(:tweet).destroy? %>
+            <p><%= link_to image_tag('destroy.png'), tweet_path(tweet), 
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+          <% if policy(:tweet).update? %>
+          <p><%= link_to  image_tag('edit.png'), edit_tweet_path(tweet) %></p>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+  <% end %>
+  <% end %>
+</div>
+

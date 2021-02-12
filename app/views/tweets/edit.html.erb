@@ -1,0 +1,19 @@
+<div class = "body">
+  <header class="main-header">
+    <h2> Edit Tweet </h2>
+  </header>
+  <div class="form-container">
+    <%= form_with model:@tweet, local: true do |form| %> 
+    <% if policy(:tweet).create? %>
+      <div class="body-field">
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+      </div>
+      <div class="actions-row">
+        <%= button_tag ('Cancel'), type: "submit", name: "cancel", value: true, class: "" %>
+        <%= form.submit 'Edit' %>
+      </div>  
+    <% end %>
+    <% end %>
+  </div>
+</div>

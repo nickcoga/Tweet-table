@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TweetableGrupal</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="principal">
+  <body>
+  <aside>
+    <div class = "tweetable">
+      <h3> { <span class = "text-blue">Tweet</span>able } </h3>
+    <div>
+
+    <div class="logo">
+      <%= link_to root_path do %>
+      <%= image_tag('twitter.png')%>
+      <span> HOME </span>
+      <% end %>
+    </div>
+
+    <div class="loggin">
+      <% if current_user%>
+      <h3>
+        <%= link_to profile_tweets_user_path(current_user) do %>
+        <%= image_tag('profile.png')%>
+        <span> Profile </span>
+        <% end %>
+      </h3>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+      <%else%>
+        <%= button_to 'Login', new_user_session_path  %>
+        <br>
+        <%= link_to  "Sign in with Github", user_github_omniauth_authorize_path %>
+        <%= link_to "Sign in with Google" , user_google_oauth2_omniauth_authorize_path %>
+      <%end%>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+  </aside>
+
+    <%= yield %>
+  </body>
+</div>
+
+</html>

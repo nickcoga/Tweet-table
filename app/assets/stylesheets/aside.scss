@@ -1,0 +1,61 @@
+// Place all the styles related to the tweet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$principal-color: #1DA1F2;
+
+.principal {
+  display: flex;
+  width: 800px;
+}
+.text-blue{
+  color:$principal-color
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+a:visited {
+  text-decoration: none;
+  color: black; }
+body {
+  max-width: 1440px;
+  border-radius: 0px;
+  // max-width: 1366px;
+  background-color: #fff;
+  padding-left: 80px;
+  padding-right: 80px;
+  color: #333;
+  margin: 0 auto;
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 180px;
+}
+.body{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loggin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.log-sign {
+  padding: 8px;
+  border: solid 1px $principal-color;
+  border-radius: 30%;
+  margin-left: 10px;
+}
+

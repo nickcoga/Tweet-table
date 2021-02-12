@@ -1,0 +1,21 @@
+  <%= form_for :tweet, url: tweets_path  do |form| %>
+  <% if policy(:tweet).create? %>
+  <div class = "tweet">
+    
+    <div class="tweet_avatar">
+      <%= current_user.avatar.attached? ? image_tag(current_user.avatar) : image_tag('Image.png') %>
+    </div>
+    
+    <div class="tweet_body">
+      <div class="tweet_body_main">
+        <%= form.text_area :body , placeholder: 'Remember to thing before write...' %>
+      </div>
+      <%= form.hidden_field :replied_to_id, value: @response_tweet.id ,class: "input-text" %>
+      <div class="tweet_body_button">
+        <%= form.submit "Tweet" %>
+      </div>
+    </div>
+
+  </div>
+  <% end %>
+  <% end %>
